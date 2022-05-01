@@ -1,0 +1,257 @@
+$mainColor:#DBEEEE;
+$secondColor:#E4D7B9;
+$fontColor:#3D9090;
+// General Settings
+@font-face{
+    src:url(../fonts/sf-compact-display-medium-5864711817c30.otf);
+    font-family:"SF comapact display";
+}
+*{box-sizing: border-box;}
+body{
+    font-family: 'DM Sans', sans-serif;
+    height:100vh;
+    background-color:$mainColor;
+    p{font-family:"Cairo",sans-serif}
+    a{text-decoration: none;color:inherit}
+    ul{list-style: none;padding:5px ;margin:0;}
+}
+.container{ 
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left:auto;
+    margin-right:auto;
+    width:95%;
+    height:100%;
+}
+
+/* Start Header */
+header{
+    nav{
+        padding:5px;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;        
+        .logo{
+             background-image:linear-gradient(to right ,$fontColor, $secondColor 70%);
+             background-clip: text;
+             color:transparent;
+             font-size:40px;
+             font-weight:bold;
+             font-family:"Cairo",sans-serif;
+             text-transform: uppercase;
+             letter-spacing: 2px;
+             margin:0;
+            }
+        .main-list{        
+            display: block ;                     
+            li{
+                padding:10px 15px;
+                margin:5px;
+                display:inline-block;
+                color:$fontColor;
+                text-transform:uppercase;
+                letter-spacing:2px;
+                transition:.3s;
+                &:hover{
+                    border-radius:5px;
+                    background-color:$fontColor;
+                    color:#FFF;
+                    cursor:pointer;
+                }
+            }            
+        }       
+
+        .menu{
+            display: none;
+            font-size:30px;
+            margin:10px;
+            color:$fontColor;
+            &:hover{
+                header nav .main-list{
+                    display: block !important;
+                }
+            }
+
+        } 
+        @include md{
+            .menu {
+                display: block ;}         
+            .main-list{
+                display: none;
+            }
+        }
+    }   
+}
+
+/* Start Content Details */
+.content{
+    display: flex;
+    flex-direction: row;
+    .details{
+        flex:1;
+        .description,.testing{width:100%}
+        .description{
+            font-size:15px;
+            margin-bottom:40px;
+            p{
+                text-align:left;
+                padding-right:100px;
+                word-spacing:3px;
+                font-size:17px;
+                letter-spacing:.5px;
+                line-height:1.7;
+            }
+            @include sm{
+                p{
+                    font-size:15px;
+                    line-height:1.4
+                }
+            }
+            @include md{
+                p{
+                    padding-right:40px;
+                }
+            }
+        }
+
+        .testing{
+            displaY: flex;
+            justify-content: space-between;
+            border-top: 2px solid #CCC;
+            position: relative; 
+            .product-info{
+                align-self: center;
+                &::before{
+                    content: "";
+                    background-color:$secondColor;
+                    position: absolute;                    
+                    width:440px;
+                    height:440px;
+                    border-radius:50%;
+                    left:-70px;
+                    top:15px;
+                    z-index: -1;
+                }
+                
+                li{margin-bottom:30px;font-size:14px}
+            }
+            >img{max-height:450px}
+            .choosing{
+                background-color:#BDDDDD;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items:center;
+                padding:10px;
+                li{
+                    display: flex;
+                    justify-content: center;
+                    background-color: transparent;            
+                    padding: 5px;
+                    min-width:80px;
+                    border-radius: 6px;
+                    margin-bottom: 15px;         
+                    transition: .4s;     
+                    &:hover{
+                        background-color:#FFFFFF96;
+                    }      
+                    img{
+                        max-height:100px;
+                    }                
+                }
+            }
+            @include sm{
+                gap:50px;
+                .product-info{
+                    font-size:13px;                    
+                    align-self: center;
+                    &::before{
+                        left:-100px;
+                        top:0px;
+                        width:370px !important;
+                        height:370px !important;
+                    }         
+                }
+                >img{max-height:350px}
+            }
+            @include md{
+                gap:30px;
+                .product-info{                    
+                    &::before{
+                        width:360px;
+                        height:360px;
+                    }                    
+                }
+                >img{
+                    max-height: 290px;
+                }
+            }
+            @include breakpoint(980px){
+                
+                > img{max-height: 340px}
+    
+            }    
+            
+        }
+    }
+
+    .view{
+        $myLink:dark;
+        flex:1;
+        box-shadow:-2px 0 10px rgba(131, 131, 131, 0.411);
+        border-radius:10px;
+        background:url(../imgs/Mask\ Group-light.png) no-repeat 0 0/ cover;
+        z-index: 5;
+        position: relative;
+        & > img{
+            left:30%;
+            position:absolute;
+            max-height:280px;
+        }        
+        
+        div{
+            position: absolute; 
+            background-color:#4444447d;
+            color:#FFF;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            right:0;
+            top:0; 
+            border-radius:6px;
+            margin:10px;    
+             
+            a{
+                transition: .3s;
+                &:first-of-type{border-radius:6px 2px 2px 6px ;}                                
+                &:last-of-type{border-radius:2px 6px 6px 2px ;}                                
+                color:#FFF;
+                padding:15px;
+                font-size:26px;
+                &:hover,&:focus{
+                    background-color: $secondColor;
+                    color:#000;
+                }
+            }                     
+        }
+        @include sm{
+            max-height:830px;
+            margin-top:30px;           
+        }
+        @include md{
+            min-height:600px;                 
+        }
+        
+    
+    }
+    @include sm {
+        flex-direction: column;
+    }
+
+}
+
+/* Function */
+
+
+
