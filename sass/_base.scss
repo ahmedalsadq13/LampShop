@@ -94,7 +94,7 @@ header{
                 transition:.3s;
                 &:hover{
                     border-radius:5px;
-                    background-color:$fontColor;
+                    background-color:#A3DFDF;
                     color:#FFF;
                     cursor:pointer;     
                                    
@@ -108,7 +108,7 @@ header{
             .main-list{        
                 transition: .4s;
                 position: relative;    
-                background-color:rgba(0, 0, 0, 0.774);
+                background-color:rgba(0, 156, 164, 0.77);
                 border-radius:6px;
                 margin-block:10px;    
                 top:0;
@@ -118,7 +118,7 @@ header{
                     padding: 10px 15px;
                     margin: 5px;
                     display: block;
-                    color: #3D9090;
+                    color: #fff;
                     text-transform: uppercase;
                     letter-spacing: 2px;
                     transition: .3s;
