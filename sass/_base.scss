@@ -1,6 +1,14 @@
 $mainColor:#DBEEEE;
 $secondColor:#E4D7B9;
 $fontColor:#3D9090;
+$gr-animate: linear-gradient(
+    to right,
+    rgb(231, 145, 46),
+    #E4D7B9,
+    rgb(16, 223, 188),
+    #3D9090
+   
+);
 // General Settings
 @font-face{
     src:url(../fonts/sf-compact-display-medium-5864711817c30.otf);
@@ -11,6 +19,7 @@ body{
     font-family: 'DM Sans', sans-serif;
     height:100vh;
     background-color:$mainColor;
+    overflow-x:hidden;
     p{font-family:"Cairo",sans-serif}
     a{text-decoration: none;color:inherit}
     ul{list-style: none;padding:5px ;margin:0;}
@@ -27,24 +36,54 @@ body{
 /* Start Header */
 header{
     nav{
+        position: relative;
         padding:5px;
         display:flex;
         flex-direction:row;
         justify-content:space-between;
         align-items:center;        
         .logo{
-             background-image:linear-gradient(to right ,$fontColor, $secondColor 70%);
+            background-image:$gr-animate;
+             background-size:400%;
+             background-position:left;
              background-clip: text;
              color:transparent;
-             font-size:40px;
+             font-size:50px;
              font-weight:bold;
              font-family:"Cairo",sans-serif;
              text-transform: uppercase;
              letter-spacing: 2px;
              margin:0;
+             animation:gradients 10s linear infinite alternate;
+             text-shadow: 3px 4px  0 #FFF;
             }
+        #check{display:none;}
+        #check:checked ~ .main-list{
+            right:10px;
+        }
+        #check:checked ~ #btn{
+            z-index: 100;
+            top:10px;
+            right:200px;
+        }        
+        label{
+            display: none;
+            font-size:30px;
+            margin:10px;
+            color:$fontColor;
+            cursor:pointer;
+            position: absolute;
+            top:80px;
+            right:50px;
+            transition: .4s;
+
+        } 
+        #cancel{
+            top:10px;
+            right:200px;
+        }
         .main-list{        
-            display: block ;                     
+            display: block ;            
             li{
                 padding:10px 15px;
                 margin:5px;
@@ -57,28 +96,34 @@ header{
                     border-radius:5px;
                     background-color:$fontColor;
                     color:#FFF;
-                    cursor:pointer;
+                    cursor:pointer;     
+                                   
                 }
             }            
         }       
 
-        .menu{
-            display: none;
-            font-size:30px;
-            margin:10px;
-            color:$fontColor;
-            &:hover{
-                header nav .main-list{
-                    display: block !important;
-                }
-            }
-
-        } 
         @include md{
-            .menu {
+            label {
                 display: block ;}         
-            .main-list{
-                display: none;
+            .main-list{        
+                transition: .4s;
+                position: relative;    
+                background-color:rgba(0, 0, 0, 0.774);
+                border-radius:6px;
+                margin-block:10px;    
+                top:0;
+                right:-250px;     
+                z-index: 50;     
+                li{
+                    padding: 10px 15px;
+                    margin: 5px;
+                    display: block;
+                    color: #3D9090;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    transition: .3s;
+                    text-align: right;
+                }
             }
         }
     }   
@@ -251,7 +296,10 @@ header{
 
 }
 
-/* Function */
+@keyframes gradients {
+  0%{background-position:left}  
+  100%{background-position:right}  
+}
 
 
 
